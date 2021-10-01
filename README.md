@@ -1,1 +1,3 @@
-# SudokuWebRanking
+# Sudoku
+
+Sudoku algorithm with JAVA
