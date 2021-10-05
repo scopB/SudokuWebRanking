@@ -11,8 +11,8 @@ class Hello{
         { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
         { 0, 0, 0, 0, 0, 0, 0, 0, 0 } 
     };
-    public static final int EMPTY = 0; // empty cell
-	public static final int SIZE = 9; // size of our Sudoku grids
+    public static final int EMPTY = 0; 
+	public static final int SIZE = 9; 
     static boolean isInRow(int row, int number) {
 		for (int i = 0; i < SIZE; i++)
 			if (GRID_TO_SOLVE[row][i] == number)
@@ -20,7 +20,6 @@ class Hello{
 		return false;
 	}
 	
-	// we check if a possible number is already in a column
 	static boolean isInCol(int col, int number) {
 		for (int i = 0; i < SIZE; i++)
 			if (GRID_TO_SOLVE[i][col] == number)
@@ -29,7 +28,6 @@ class Hello{
 		return false;
 	}
 	
-	// we check if a possible number is in its 3x3 box
 	static boolean isInBox(int row, int col, int number) {
 		int r = row - row % 3;
 		int c = col - col % 3;
@@ -42,7 +40,6 @@ class Hello{
 		return false;
 	}
 	
-	// combined method to check if a number possible to a row,col position is ok
 	static boolean isok(int row, int col, int number) {
 		return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInBox(row, col, number);
 	}
@@ -75,14 +72,12 @@ class Hello{
         }
     }
 
-    // This Main is God Don't Touch
     public static void main(String[] args){
         random_number();
         Sudoku sudoku = new Sudoku(GRID_TO_SOLVE);
 		System.out.println("Sudoku grid to solve");
 		sudoku.display();
 		
-		// we try resolution
 		if (sudoku.solve()) {
 			System.out.println("Sudoku Grid solved with simple BT");
 			sudoku.display();
