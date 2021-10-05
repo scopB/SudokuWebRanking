@@ -1,8 +1,5 @@
-// package com.ssaurel.sudoku;
-
 public class Sudoku{
-	
-	// we define a simple grid to solve. Grid is stored in a 2D Array
+
 	public static int[][] GRID_TO_SOLVE = {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -16,8 +13,8 @@ public class Sudoku{
 	};
 	
 	private int[][] board;
-	public static final int EMPTY = 0; // empty cell
-	public static final int SIZE = 9; // size of our Sudoku grids
+	public static final int EMPTY = 0; 
+	public static final int SIZE = 9;
 	
 	public Sudoku(int[][] board) {
 		this.board = new int[SIZE][SIZE];
@@ -29,7 +26,6 @@ public class Sudoku{
 		}
 	}
 	
-	// we check if a possible number is already in a row
 	private boolean isInRow(int row, int number) {
 		for (int i = 0; i < SIZE; i++)
 			if (board[row][i] == number)
@@ -38,7 +34,6 @@ public class Sudoku{
 		return false;
 	}
 	
-	// we check if a possible number is already in a column
 	private boolean isInCol(int col, int number) {
 		for (int i = 0; i < SIZE; i++)
 			if (board[i][col] == number)
@@ -47,7 +42,6 @@ public class Sudoku{
 		return false;
 	}
 	
-	// we check if a possible number is in its 3x3 box
 	private boolean isInBox(int row, int col, int number) {
 		int r = row - row % 3;
 		int c = col - col % 3;
@@ -60,13 +54,10 @@ public class Sudoku{
 		return false;
 	}
 	
-	// combined method to check if a number possible to a row,col position is ok
 	private boolean isOk(int row, int col, int number) {
 		return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInBox(row, col, number);
 	}
 	
-	// Solve method. We will use a recursive BackTracking algorithm.
-	// we will see better approaches in next video :)
        public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
          for (int col = 0; col < SIZE; col++) {
@@ -86,12 +77,12 @@ public class Sudoku{
              }
             }
 
-            return false; // we return false
+            return false; 
            }
           }
          }
 
-         return true; // sudoku solved
+         return true; 
 	}
 	
 	public void display() {
@@ -111,7 +102,6 @@ public class Sudoku{
 		System.out.println("Sudoku grid to solve");
 		sudoku.display();
 		
-		// we try resolution
 		if (sudoku.solve()) {
 			System.out.println("Sudoku Grid solved with simple BT");
 			sudoku.display();
